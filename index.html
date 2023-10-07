@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tablero de Bingo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Candal&family=Permanent+Marker&family=Rowdies:wght@300&display=swap" rel="stylesheet">
+    <!-- Utilizar SweetAlert desde un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
+        
+</head>
+<script >
+    function confirmReset() {
+    Swal.fire({
+        title: "Estas seguro?",
+        text: "No podras revertir esta accion!",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Reinicialo!",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            reset();
+            Swal.fire(
+                "Reiniciado!",
+                "Tu juego ha sido reiniciado!.",
+                
+            );
+        }
+    });
+}
+</script>
+
+<body>
+    <div class="circle-container">
+        <div class="circle-letter">
+            <h1 class="letter">B</h1>
+        </div>
+        <div class="circle-letter">
+            <h1 class="letter">I</h1>
+        </div>
+        <div class="circle-letter">
+            <h1 class="letter">N</h1>
+        </div>
+        <div class="circle-letter">
+            <h1 class="letter">G</h1>
+        </div>
+        <div class="circle-letter">
+            <h1 class="letter">O</h1>
+        </div>
+    </div>
+
+    <div class="medio">
+
+        <div id="generador" class="generador">
+            <div class="container">
+                <div class="vlgnd">
+                    <h1 id="valorGenerado"></h1>
+                </div>
+                <div class="shadow"></div>
+            </div>
+        </div>
+
+        <div id="mostrar" class="valores">
+        </div>
+
+        <div class="GM">
+            <div id="patron" class="patron"></div>
+            <button onclick="clearCells()">limpiar</button>
+        </div>
+
+    </div>
+    
+
+    <div class="contenedor">
+        <div class="tabla">
+            <table class="bg">
+                <tr id="fila1">
+                    <th class="bgg">B</th>
+                </tr>
+                <tr id="fila2">
+                    <th class="bgg">I</th>
+                </tr>
+                <tr id="fila3">
+                    <th class="bgg">N</th>
+                </tr>
+                <tr id="fila4">
+                    <th class="bgg">G</th>
+                </tr>
+                <tr id="fila5">
+                    <th class="bgg">O</th>
+                </tr>
+            </table>
+
+        </div>
+        <div class="btncon">
+            <nav>
+                <ul class="nav">
+                    <li>
+                        <a href="#" id="activarGenerador" onclick="stopGen(), mostrarValor()">
+                            <span class="icon-play"></span>
+                            <span class="screen-reader-text">play</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="gen" onclick="autoGen()">
+                            <span class="icon-loop"></span>
+                            <span class="screen-reader-text">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="gen" onclick="stopGen(), confirmReset()">
+                            <span class="icon-spin3"></span>
+                            <span class="screen-reader-text">Reset</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
